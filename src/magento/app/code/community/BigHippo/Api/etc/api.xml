@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+  <api>
+      <resources>
+        <bighippo_sales translate="title" module="api">
+            <model>bighippo_api/sales_order</model>
+            <title>Sales Api</title>
+            <acl>bighippo_sales/order</acl>
+            <methods>
+                <createTransaction translate="title" module="api">
+                    <title>Create a transaction to an order payment.</title>
+                    <method>createTransaction</method>
+                    <acl>bighippo_sales/sales/createTransaction</acl>
+                </createTransaction>
+            </methods>
+        </bighippo_sales>
+        <bighippo_checkout translate="title" module="api">
+          <model>bighippo_api/checkout_cart</model>
+          <title>Checkout Api</title>
+          <acl>bighippo_checkout/cart</acl>
+          <methods>
+            <updateCartProductPrice translate="title" module="api">
+              <title>Create a transaction to an order payment.</title>
+              <method>updateCartProductPrice</method>
+              <acl>bighippo_checkout/cart/createTransaction</acl>
+            </updateCartProductPrice>
+          </methods>
+        </bighippo_checkout>
+      </resources>
+
+      <acl>
+          <resources>
+            <bighippo_sales translate="title" module="api">
+                 <title>BigHippo Sales Api</title>
+                 <sort_order>1</sort_order>
+                 <order translate="title" module="api">
+                     <title>Sales</title>
+                     <sort_order>100</sort_order>
+
+                     <createTransaction translate="title" module="api">
+                        <title>Create a transaction to an order payment.</title>
+                     </createTransaction>
+                 </order>
+            </bighippo_sales>
+            <bighippo_checkout translate="title" module="api">
+              <title>BigHippo Checkout Api</title>
+              <sort_order>2</sort_order>
+              <cart translate="title" module="api">
+                <title>Sales</title>
+                <sort_order>100</sort_order>
+
+                <updateCartProductPrice translate="title" module="api">
+                  <title>Set a custom price to a product in cart.</title>
+                </updateCartProductPrice>
+              </cart>
+            </bighippo_checkout>
+          </resources>
+      </acl>
+  </api>
+</config>

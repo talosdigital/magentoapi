@@ -9,6 +9,8 @@ var MagentoError = require('./error.js');
 // globals
 var slice = Array.prototype.slice;
 var resources = {
+  bighippoSales: './resources/bighippo_sales.js',
+  bighippoCheckout: './resources/bighippo_checkout.js',
   catalogCategory: './resources/catalog_category.js',
   catalogCategoryAttribute: './resources/catalog_category_attribute.js',
   catalogProduct: './resources/catalog_product.js',
