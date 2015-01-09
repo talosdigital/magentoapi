@@ -40,8 +40,8 @@ Or, if no params are sent, just a callback as the first argument.
 
 ## Methods
 
-+ [BigHippo](./readmes/bighippo_checkout.md)
-+ [BigHippo](./readmes/bighippo_sales.md)
++ [BigHippo Checkout Custom API](./readmes/bighippo_checkout.md)
++ [BigHippo Sales Custom API](./readmes/bighippo_sales.md)
 + [Catalog Category](./readmes/catalog_category.md)
 + [Catalog Category Attribute](./readmes/catalog_category_attribute.md)
 + [Catalog Product](./readmes/catalog_product.md)
