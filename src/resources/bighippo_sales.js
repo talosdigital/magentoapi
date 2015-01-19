@@ -23,7 +23,16 @@ var protos = {
   createTransaction: {
       mandatory: 'orderId',
       optional: 'transactionId,addInfo,type,failsafe,isClosed',
-    }
+    },
+
+  /**
+   Allows you to retrieve the list of transactions.
+   */
+  listTransactions: {
+    mandatory: 'orderId',
+    optional: 'type',
+  },
+
 };
 
 // creating prototypes using curry func

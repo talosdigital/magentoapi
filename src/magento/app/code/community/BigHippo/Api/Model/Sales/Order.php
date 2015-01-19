@@ -26,8 +26,7 @@ class BigHippo_Api_Model_Sales_Order extends Mage_Api_Model_Resource_Abstract
       $type = Mage_Sales_Model_Order_Payment_Transaction::TYPE_CAPTURE;
     }
 
-    $order = Mage::getModel("sales/order")->load($orderId);
-
+    $order = Mage::getModel("sales/order")->loadByIncrementId($orderId);
 
     // set transaction parameters
     $transaction = false;
@@ -62,18 +61,26 @@ class BigHippo_Api_Model_Sales_Order extends Mage_Api_Model_Resource_Abstract
     return array("transactionId" => $transaction->getId());
 	}
 
-  protected function isJson($string) {
-    json_decode($string);
-    return (json_last_error() == JSON_ERROR_NONE);
+  public function listTransactions($orderId, $type = 'capture') {
+
+    $order = Mage::getModel("sales/order")->loadByIncrementId($orderId);
+
+    $transactions = Mage::getModel('sales/order_payment_transaction')->getCollection()
+      ->addAttributeToFilter('order_id', array('eq' => $order->getId()))
+      ->addAttributeToFilter('txn_type', array('eq' => $type));
+
+    $transactionsData = array();
+    foreach($transactions as $transaction) {
+      $transactionData = array();
+      $transactionData["transaction_id"] = $transaction->getData("transaction_id");
+      $transactionData["parent_id"] = $transaction->getData("parent_id");
+      $transactionData["type"] = $transaction->getType();
+      $transactionData["is_closed"] = $transaction->getData("is_closed");
+      $transactionData["details"] = $transaction->getData("additional_information");
+      $transactionData["created_at"] = $transaction->getData("created_at");
+      $transactionsData[] = $transactionData;
+    }
+    return $transactionsData;
   }
 
-  protected function fixJson( $s ){
-    $s = str_replace(
-        array('"',  "'"),
-        array('\"', '"'),
-        $s
-    );
-    $s = preg_replace('/(\w+):/i', '"\1":', $s);
-    return json_decode(sprintf('{%s}', $s));
-   }
 }
