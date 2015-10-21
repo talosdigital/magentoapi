@@ -30,7 +30,7 @@ var protos = {
   },
 
   resetPassword: {
-    mandatory: 'email,newpassword,website'
+    mandatory: 'token,email,newpassword,passwordConfirmation,website'
   },
 
   logout:{
