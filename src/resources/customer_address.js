@@ -53,10 +53,7 @@ var protos = {
     Update address data of the required customer
   */
   update: {
-    mandatory: 'addressId,addressData',
-    modifiers: {
-      addressData: ensureArray
-    }
+    mandatory: 'addressId,addressData'
   }
 };
 

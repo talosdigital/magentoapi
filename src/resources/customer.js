@@ -22,6 +22,7 @@ var protos = {
   */
   create: {
     mandatory: 'customerData',
+    optional: 'attributes',
     modifiers: {
       // to do: figure out why this was causing an issue
       // customerData: ensureArray

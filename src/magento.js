@@ -9,6 +9,7 @@ var MagentoError = require('./error.js');
 // globals
 var slice = Array.prototype.slice;
 var resources = {
+  bighippoCustom: './resources/bighippo_custom.js',
   bighippoCms: './resources/bighippo_cms.js',
   bighippoCustomer: './resources/bighippo_customer.js',
   bighippoSales: './resources/bighippo_sales.js',
