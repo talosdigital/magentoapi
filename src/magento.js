@@ -13,7 +13,7 @@ var resources = {
   //bighippoPaymentplanMetadata: './resources/bighippo_paymentplan_metadata.js',
   //bighippoPaymentplanSchedule: './resources/bighippo_paymentplan_schedule.js',
   //bighippoPaymentplanScheduleInformation: './resources/bighippo_paymentplan_schedule_information.js',
-  //bighippoCoupon: './resources/bighippo_coupon.js',
+  bighippoCoupon: './resources/bighippo_coupon.js',
   bighippopaymentretryInformation: './resources/bighippo_paymentretry_information.js',
   bighippoPaymentRetry: './resources/bighippo_paymentretry.js',
   bighippoProducts: './resources/bighippo_product.js',
