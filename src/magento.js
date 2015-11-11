@@ -11,7 +11,7 @@ var slice = Array.prototype.slice;
 var resources = {
   //bighippoPaymentplan: './resources/bighippo_paymentplan.js',
   //bighippoPaymentplanMetadata: './resources/bighippo_paymentplan_metadata.js',
-  //bighippoPaymentplanSchedule: './resources/bighippo_paymentplan_schedule.js',
+  bighippoPaymentplanSchedule: './resources/bighippo_paymentplan_schedule.js',
   bighippoPaymentplanScheduleInformation: './resources/bighippo_paymentplan_schedule_information.js',
   bighippoCoupon: './resources/bighippo_coupon.js',
   bighippopaymentretryInformation: './resources/bighippo_paymentretry_information.js',
