@@ -9,14 +9,14 @@ var MagentoError = require('./error.js');
 // globals
 var slice = Array.prototype.slice;
 var resources = {
-  bighippoPaymentplan: './resources/bighippo_paymentplan.js',
-  bighippoPaymentplanMetadata: './resources/bighippo_paymentplan_metadata.js',
-  bighippoPaymentplanSchedule: './resources/bighippo_paymentplan_schedule.js',
-  bighippoPaymentplanScheduleInformation: './resources/bighippo_paymentplan_schedule_information.js',
-  bighippoCoupon: './resources/bighippo_coupon.js',
-  bighippopaymentretryInformation: './resources/bighippo_paymentretry_information.js',
-  bighippoPaymentRetry: './resources/bighippo_paymentretry.js',
-  bighippoProducts: './resources/bighippo_product.js',
+  bighippoPaymentplan: './resources/bighippo_paymentplan.js',//An error occurred while calling bighippo_paymentplan.list
+  bighippoPaymentplanMetadata: './resources/bighippo_paymentplan_metadata.js',//An error occurred while calling bighippo_paymentplan_metadata.list
+  bighippoPaymentplanSchedule: './resources/bighippo_paymentplan_schedule.js',//An error occurred while calling bighippo_paymentplan_schedule.list
+  bighippoPaymentplanScheduleInformation: './resources/bighippo_paymentplan_schedule_information.js',//An error occurred while calling bighippo_paymentplan_schedule_information.list
+  bighippoCoupon: './resources/bighippo_coupon.js',//Invalid api path.
+  bighippopaymentretryInformation: './resources/bighippo_paymentretry_information.js',//Resource path is not callable.
+  bighippoPaymentRetry: './resources/bighippo_paymentretry.js',//Resource path is not callable.
+  bighippoProducts: './resources/bighippo_product.js',//Resource path is not callable.
 
   bighippoSales: './resources/bighippo_sales.js',
   bighippoCheckout: './resources/bighippo_checkout.js',
