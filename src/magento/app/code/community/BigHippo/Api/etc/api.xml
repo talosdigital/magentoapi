@@ -71,6 +71,26 @@
       </resources>
     </acl>
 
+    <acl>
+      <resources>
+        <Bighippo_products translate="title" module="api">
+          <title>BigHippo Product</title>
+          <sort_imple_product>1</sort_imple_product>
+          <bighippo_simple_products translate="title" module="api">
+               <title>list Simple Products</title>
+               <sort_simple_product>1</sort_simple_product>
+               <simple_product translate="title" module="api">
+                 <title>Sales</title>
+                 <sort_product>100</sort_product>
+                 <listSimpleProduct translate="title" module="api">
+                    <title>List simple products.</title>
+                 </listSimpleProduct>
+               </simple_product>
+          </bighippo_simple_products>
+        </Bighippo_products>
+      </resources>
+    </acl>
+
   </api>
 
 </config>

@@ -40,6 +40,14 @@ Or, if no params are sent, just a callback as the first argument.
 
 ## Methods
 
++ [BigHippo Paymentplan Custom API](./readmes/bighippo_paymentplan.md)
++ [BigHippo Paymentplan Metadata Custom API](./readmes/bighippo_paymentplan_metadata.md)
++ [BigHippo Paymentplan Schedule Custom API](./readmes/bighippo_paymentplan_schedule.md)
++ [BigHippo Paymentpla Schedule Information Custom API](./readmes/bighippo_paymentplan_schedule_information.md)
++ [BigHippo Coupon Custom API](./readmes/bighippo_coupon.md)
++ [BigHippo Paymentretry Information Custom API](./readmes/bighippo_paymentretry_information.md)
++ [BigHippo Paymentretry Custom API](./readmes/bighippo_paymentretry.md)
++ [BigHippo Product Custom API](./readmes/bighippo_product.md)
 + [BigHippo Checkout Custom API](./readmes/bighippo_checkout.md)
 + [BigHippo Sales Custom API](./readmes/bighippo_sales.md)
 + [Catalog Category](./readmes/catalog_category.md)
