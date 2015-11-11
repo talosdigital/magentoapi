@@ -30,5 +30,10 @@ magento.login(function(err, sessionId) {
       if (err) throw err;
       console.log('Found %d countries', countries.length);
     });
+
+    magento.bighippoProducts.listSimpleProducts({productId:110},function(err, simpleProduct) {
+      if (err) throw err;
+      console.log('Found %d simpleProducts', simpleProduct);
+    });
   });
 });
