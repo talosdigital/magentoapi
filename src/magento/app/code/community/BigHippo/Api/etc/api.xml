@@ -73,7 +73,7 @@
 
     <acl>
       <resources>
-        <Bighippo_product translate="title" module="api">
+        <Bighippo_products translate="title" module="api">
           <title>BigHippo Product</title>
           <sort_imple_product>1</sort_imple_product>
           <bighippo_simple_products translate="title" module="api">
@@ -87,7 +87,7 @@
                  </listSimpleProduct>
                </simple_product>
           </bighippo_simple_products>
-        </Bighippo_product>
+        </Bighippo_products>
       </resources>
     </acl>
 
