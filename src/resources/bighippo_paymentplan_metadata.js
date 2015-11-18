@@ -29,7 +29,7 @@ var protos = {
    Allows you to update the payment retry.
    */
   update: {
-    mandatory: 'paymentPlanId',
+    mandatory: 'paymentPlanId, metadataData',
     optional: '',
   },
 
