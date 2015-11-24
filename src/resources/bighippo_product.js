@@ -41,6 +41,14 @@ var protos = {
     optional: '',
   },
 
+  /**
+   Allows you to retrieve the list of Grouped Products by category.
+   */
+  listGroupedProductsByCategories: {
+    mandatory: '',
+    optional: 'argumentsGroupedProducts,argumentsSimpleProducts,includeMedia,categoryIds',
+  }
+
 };
 
 // creating prototypes using curry func
