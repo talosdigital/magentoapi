@@ -22,7 +22,7 @@ var protos = {
    */
   listSimpleProducts: {
       mandatory: 'productId',
-      optional: 'arguments,inludeMedia',// arguments = [{filters:[0,1,2,30,4]}, {page:5}]
+      optional: 'arguments,includeMedia',// arguments = [{filters:[0,1,2,30,4]}, {page:5}]
     },// inludeMedia = true
 
   /**
@@ -30,7 +30,7 @@ var protos = {
    */
   listGroupedProducts: {
     mandatory: '',
-    optional: 'argumentsGroupedProducts,argumentsSimpleProducts,inludeMedia',
+    optional: 'argumentsGroupedProducts,argumentsSimpleProducts,includeMedia',
   },
 
   /**
