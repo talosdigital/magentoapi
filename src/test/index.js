@@ -102,7 +102,7 @@ describe('new api products',function(){
       });
     });
 
-    it('delete payment plans', function(done){
+    it.skip('delete payment plans', function(done){
       var param = {paymentPlanId:resulst.paymentplanId};
       magento.bighippoPaymentplan.delete(param, function(err,data){
         assert.isNull(err)
@@ -114,6 +114,117 @@ describe('new api products',function(){
 
   });
 //end Payment plan test
+
+
+
+
+
+
+
+
+  describe('Payment plan meta test' , function(){
+
+    it('create payment plans metadata', function(done){
+      var param = {paymentPlanId : resulst.paymentplanId,
+        metadataData:{
+          name : 'testNAME1',
+          value : 'testVALUE1',
+        }
+      };
+
+      magento.bighippoPaymentplanMetadata.create(param, function(err,data){
+        resulst.metadataId=data;
+        assert.isNull(err)
+        assert.isString(data)
+        done();
+      });
+    });
+
+    it('update payment plans metadata', function(done){
+      var param = {paymentPlanId:resulst.paymentplanId,
+        metadataData:[{
+          name : 'testNAME1',
+          value : 'testVALUE3'
+        },{
+          name : 'testNAME4',
+          value : 'testVALUE4'
+        }]};
+
+      magento.bighippoPaymentplanMetadata.update(param, function(err,data){
+        console.log('err', err);
+        console.log('data', data);
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
+
+    it('list payment plans meta', function(done){
+      var param = {paymentPlanId : resulst.paymentplanId};
+
+      magento.bighippoPaymentplanMetadata.list(param, function(err,data){
+        //console.log('data' ,data);
+        //console.log('error' ,err);
+        assert.isNull(err)
+        assert.isArray(data)
+        done();
+      });
+    });
+
+    it.skip('info payment plans metadata', function(done){
+      var param = {metadataId:resulst.metadataId};
+      console.log('param' , param);
+      magento.bighippoPaymentplanMetadata.info(param, function(err,data){
+        console.log('err', err);
+        console.log('data', data);
+        assert.isNull(err)
+        assert.isObject(data)
+        assert.equal('testName3', data.name);
+        done();
+      });
+    });
+
+    it('delete payment plans meta', function(done){
+      var param = {metadataId:resulst.metadataId};
+      magento.bighippoPaymentplanMetadata.delete(param, function(err,data){
+
+        console.log('err', err);
+        console.log('data', data);
+
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
+
+    /**
+
+
+
+
+
+
+
+**/
+
+  });
+//end Payment plan test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   describe('Products test' , function(){
     it('list Simple Products error missing value for productId', function (done) {
