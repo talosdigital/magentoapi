@@ -15,6 +15,7 @@ var magento = new Magento({
 });
 
 var safe = wagner.safe();
+var resulst = {};
 
 
 before(function() {
@@ -34,8 +35,6 @@ before(function() {
       });
     }, 100);
   });
-
-
 });
 
 after(function() {
@@ -50,7 +49,7 @@ safe.on('error', function(error) {
 
 
 describe('new api products',function(){
-this.timeout(100000);
+  this.timeout(100000);
   it('login' , function(done){
     wagner.invokeAsync(function(error, login){
       assert.isNull(error);
@@ -58,30 +57,96 @@ this.timeout(100000);
     });
   })
 
+  describe('Payment plan test' , function(){
 
-  it('list Simple Products error missing value for productId', function (done) {
+    it('create payment plans', function(done){
+      var param = {paymentPlanData:
+        {name:'testName',
+          destination:'destinationTest'}};
+
+      magento.bighippoPaymentplan.create(param, function(err,data){
+        console.log('err', err);
+        console.log('data' , data);
+        resulst.paymentplanId=data;
+        assert.isNull(err)
+        assert.isString(data)
+        done();
+      });
+    });
+
+    it('update payment plans', function(done){
+      var param = {paymentPlanId:resulst.paymentplanId,
+        playmentPlanData: {name:'testName3',
+        destination:'destinationTest3'}};
+
+      magento.bighippoPaymentplan.update(param, function(err,data){
+        console.log('err', err);
+        console.log('data' , data);
+        resulst.paymentplanId=data;
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
+
+    it('info payment plans', function(done){
+      var param = {paymentPlanId:resulst.paymentplanId};
+
+      magento.bighippoPaymentplan.info(param, function(err,data){
+        console.log('err', err);
+        console.log('data' , data);
+        resulst.paymentplanId=data;
+        assert.isNull(err)
+        assert.isObject(data)
+        assert.equal('testName3', data.name);
+        done();
+      });
+    });
+
+    it('list payment plans', function(done){
+      magento.bighippoPaymentplan.list({}, function(err,data){
+        //console.log('err', err);
+        //console.log('data' , data);
+        assert.isNull(err)
+        assert.isArray(data)
+        done();
+      });
+    });
+
+
+  });
+//end Payment plan test
+
+  describe('Products test' , function(){
+    it('list Simple Products error missing value for productId', function (done) {
       magento.bighippoProducts.listSimpleProducts({}, function(err,data){
         assert.equal('missing value for "productId"', err.message)
         assert.equal('listSimpleProducts', err.method)
         done();
       });
-  });
+    });
 
-  it('list Simple Products', function (done) {
+    it('list Simple Products', function (done) {
       magento.bighippoProducts.listSimpleProducts({productId:105, arguments: [], includeMedia :true}, function(err,data){
         if(err) return done(err);
         assert.isNotNull(data);
         done();
       });
-  });
+    });
 
-  it('list grouped Products', function (done) {
-    magento.bighippoProducts.listGroupedProducts({argumentsGroupedProducts:{filters : {entity_id:105}}, argumentsSimpleProducts:[], includeMedia:true}, function(err,data){
-      if(err) return done(err);
-      assert.isNotNull(data);
-      done();
+    it('list grouped Products', function (done) {
+      magento.bighippoProducts.listGroupedProducts({argumentsGroupedProducts:{filters : {entity_id:105}}, argumentsSimpleProducts:[], includeMedia:true}, function(err,data){
+        if(err) return done(err);
+        assert.isNotNull(data);
+        done();
+      });
     });
   });
+
+
+
+
+
 
 
 
