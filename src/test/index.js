@@ -140,14 +140,6 @@ describe('new api products',function(){
       });
     });
   });
-
-
-
-
-
-
-
-
 });
 
 
