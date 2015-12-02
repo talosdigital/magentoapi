@@ -65,8 +65,6 @@ describe('new api products',function(){
           destination:'destinationTest'}};
 
       magento.bighippoPaymentplan.create(param, function(err,data){
-        console.log('err', err);
-        console.log('data' , data);
         resulst.paymentplanId=data;
         assert.isNull(err)
         assert.isString(data)
@@ -80,9 +78,6 @@ describe('new api products',function(){
         destination:'destinationTest3'}};
 
       magento.bighippoPaymentplan.update(param, function(err,data){
-        console.log('err', err);
-        console.log('data' , data);
-        resulst.paymentplanId=data;
         assert.isNull(err)
         assert.isTrue(data)
         done();
@@ -91,11 +86,7 @@ describe('new api products',function(){
 
     it('info payment plans', function(done){
       var param = {paymentPlanId:resulst.paymentplanId};
-
       magento.bighippoPaymentplan.info(param, function(err,data){
-        console.log('err', err);
-        console.log('data' , data);
-        resulst.paymentplanId=data;
         assert.isNull(err)
         assert.isObject(data)
         assert.equal('testName3', data.name);
@@ -105,10 +96,17 @@ describe('new api products',function(){
 
     it('list payment plans', function(done){
       magento.bighippoPaymentplan.list({}, function(err,data){
-        //console.log('err', err);
-        //console.log('data' , data);
         assert.isNull(err)
         assert.isArray(data)
+        done();
+      });
+    });
+
+    it('delete payment plans', function(done){
+      var param = {paymentPlanId:resulst.paymentplanId};
+      magento.bighippoPaymentplan.delete(param, function(err,data){
+        assert.isNull(err)
+        assert.isTrue(data)
         done();
       });
     });
