@@ -59,9 +59,6 @@ function prototypeBase(method, options /*, [arg1, [arg2, ]], callback */) {
 
       paramsArr.push(params[ keys[i] ]);
     }
-    console.log('callback',callback)
-    console.log('method',method)
-    console.log('paramsArr',paramsArr)
     this.emit('method', method, paramsArr, callback);
   }
 }

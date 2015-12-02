@@ -175,7 +175,11 @@ Magento.prototype.methodApply = function(method, callArr, callback) {
 
     callback.apply(self, arguments);
   });
-
+  console.log('----------')
+  console.log('callback',callback)
+  console.log('method',method)
+  console.log('callArr',callArr)
+  console.log('----------')
   return this;
 };
 
