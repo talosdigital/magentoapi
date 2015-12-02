@@ -6,6 +6,7 @@ var slice = Array.prototype.slice;
 
 // base prototype function, used for all the prototypes
 function prototypeBase(method, options /*, [arg1, [arg2, ]], callback */) {
+  console.log('options',options)
   var funcArgs = slice.call(arguments, 2);
   var callback = funcArgs.pop(); // assuming callback
   var keys, k, i, l;
@@ -58,6 +59,8 @@ function prototypeBase(method, options /*, [arg1, [arg2, ]], callback */) {
 
       paramsArr.push(params[ keys[i] ]);
     }
+    console.log('callback',callback)
+    console.log('method',method)
     console.log('paramsArr',paramsArr)
     this.emit('method', method, paramsArr, callback);
   }
