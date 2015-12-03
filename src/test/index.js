@@ -48,15 +48,17 @@ safe.on('error', function(error) {
 });
 
 
-describe('new api products',function(){
+describe('new api products', function () {
   this.timeout(100000);
-  it('login' , function(done){
-    wagner.invokeAsync(function(error, login){
+  it('login', function (done) {
+    wagner.invokeAsync(function (error, login) {
       assert.isNull(error);
       done();
     });
   })
 
+
+  //start payment plan test
   describe('Payment plan test' , function(){
 
     it('create payment plans', function(done){
@@ -84,7 +86,7 @@ describe('new api products',function(){
       });
     });
 
-    it('info payment plans', function(done){
+    it.skip('info payment plans', function(done){
       var param = {paymentPlanId:resulst.paymentplanId};
       magento.bighippoPaymentplan.info(param, function(err,data){
         assert.isNull(err)
@@ -113,15 +115,9 @@ describe('new api products',function(){
 
 
   });
-//end Payment plan test
+  //end payment plan test
 
-
-
-
-
-
-
-
+  //start Payment plan meta test
   describe('Payment plan meta test' , function(){
 
     it('create payment plans metadata', function(done){
@@ -184,7 +180,7 @@ describe('new api products',function(){
       });
     });
 
-    it('delete payment plans meta', function(done){
+    it.skip('delete payment plans meta', function(done){
       var param = {metadataId:resulst.metadataId};
       magento.bighippoPaymentplanMetadata.delete(param, function(err,data){
 
@@ -196,19 +192,159 @@ describe('new api products',function(){
         done();
       });
     });
+  });
+  //end Payment plan meta test
 
-    /**
+  //start payment plan schedule test
 
+  describe('Payment plan schedule test' , function(){
 
+    it('create payment plans schedule', function(done){
+      var param = {paymentPlanId : resulst.paymentplanId,
+        scheduleData:{
+          name : 'Schedule Description',
+        }
+      };
 
+      magento.bighippoPaymentplanSchedule.create(param, function(err,data){
+        resulst.scheduleId=data;
+        assert.isNull(err)
+        assert.isString(data)
+        done();
+      });
+    });
 
+    it('update payment plans schedule', function(done){
+      var param = {scheduleId:resulst.scheduleId,
+        scheduleData:{
+        name : 'Schedule Description Mod'}
+      }
 
+      console.log('param: ' , resulst.scheduleId);
 
+      magento.bighippoPaymentplanSchedule.update(param, function(err,data){
+        console.log('err', err);
+        console.log('data', data);
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
 
-**/
+    it('list payment plans schedule', function(done){
+      var param = {scheduleId : resulst.scheduleId};
+      magento.bighippoPaymentplanSchedule.list(param, function(err,data){
+        assert.isNull(err)
+        assert.isArray(data)
+        done();
+      });
+    });
+
+    it('info payment plans schedule', function(done){
+      var param = {scheduleId:resulst.scheduleId};
+      magento.bighippoPaymentplanSchedule.info(param, function(err,data){
+        assert.isNull(err)
+        assert.isObject(data)
+        assert.equal('Schedule Description Mod', data.name);
+        done();
+      });
+    });
+
+    it.skip('delete payment plans schedule', function(done){
+      var param = {paymentPlanId:resulst.paymentplanId, names : ['Schedule Description Mod']};
+      magento.bighippoPaymentplanSchedule.delete(param, function(err,data){
+
+        console.log('err', err);
+        console.log('data', data);
+
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
 
   });
-//end Payment plan test
+
+  //end payment plan schedule test
+
+  //start payment plan schedule information test
+
+  describe('Payment plan schedule information test' , function(){
+
+    it('create payment plans schedule information', function(done){
+      var param = {scheduleId:resulst.scheduleId,
+        informationData:{
+          name : 'testNameScheduleInformation',
+          value : 'testValueScheduleInformation',
+        }
+      };
+
+      magento.bighippoPaymentplanScheduleInformation.create(param, function(err,data){
+        resulst.informationId=data;
+        assert.isNull(err)
+        assert.isString(data)
+        done();
+      });
+    });
+
+    it('update payment plans schedule information', function(done){
+      var param = {scheduleId:resulst.scheduleId,
+        informationData:[{
+          name : 'testNameScheduleInformation',
+          value : 'testValueScheduleInformationUpd',
+        },{
+            name : 'testNameScheduleInformationUpd2',
+            value : 'testValueScheduleInformationUpd2',
+          }]};
+
+      magento.bighippoPaymentplanScheduleInformation.update(param, function(err,data){
+        console.log('err', err);
+        console.log('data', data);
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
+
+    it('list payment plans schedule information', function(done){
+      var param = {scheduleId : resulst.scheduleId};
+
+      magento.bighippoPaymentplanScheduleInformation.list(param, function(err,data){
+        console.log('data' ,data);
+        console.log('error' ,err);
+        assert.isNull(err)
+        assert.isArray(data)
+        assert.equal('testValueScheduleInformationUpd' , data[0].value)
+        done();
+      });
+    });
+
+    it('info payment plans schedule information', function(done){
+      var param = {informationId:resulst.informationId};
+      magento.bighippoPaymentplanScheduleInformation.info(param, function(err,data){
+        assert.isNull(err)
+        assert.isObject(data)
+        assert.equal('testNameScheduleInformation', data.name);
+        assert.equal('testValueScheduleInformationUpd', data.value);
+        done();
+      });
+    });
+
+    it('delete payment plans schedule information', function(done){
+      var param = {informationId:resulst.informationId};
+      magento.bighippoPaymentplanScheduleInformation.delete(param, function(err,data){
+
+        console.log('err', err);
+        console.log('data', data);
+
+        assert.isNull(err)
+        assert.isTrue(data)
+        done();
+      });
+    });
+  });
+
+  //end payment plan schedule information test
 
 
 
