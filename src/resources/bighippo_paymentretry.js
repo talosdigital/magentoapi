@@ -21,7 +21,7 @@ var protos = {
    Allows you to create the payment retry.
    */
   create: {
-      mandatory: 'playmentRetryData',
+      mandatory: 'paymentRetryData',
       optional: '',
     },
 
@@ -29,7 +29,7 @@ var protos = {
    Allows you to update the payment retry.
    */
   update: {
-    mandatory: 'paymentRetryId,playmentRetryData',
+    mandatory: 'paymentRetryId,paymentRetryData',
     optional: '',
   },
 
@@ -69,7 +69,7 @@ var protos = {
    Allows you to info full the payment retry.
    */
   infoFull: {
-    mandatory: 'PaymentRetryId',
+    mandatory: 'paymentRetryId',
     optional: '',
   },
 
