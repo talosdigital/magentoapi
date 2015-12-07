@@ -399,7 +399,7 @@ describe('new api products', function () {
     it.skip('list payment plan retry' , function(done){
       var param = {
         filters  : {
-          entity_id : resulst.paymentretryId
+          increment_id : '100000261'
         }
       }
       magento.bighippoPaymentRetry.list(param, function(err,data){
@@ -415,17 +415,77 @@ describe('new api products', function () {
 
   //end payment retry test
 
+  //start payment retry information test
 
+  describe('Payment retry information' , function(){
 
+    it('create retry information' , function(done){
+      var param = {
+        paymentRetryId : resulst.paymentretryId,
+        informationData : {
+          name : 'informationDataField',
+          value : 'informationDataValue'
+        }
+      }
+      magento.bighippopaymentretryInformation.create(param, function(err,data){
+        resulst.paymentretryInformationId = data;
+        assert.isString(data);
+        done();
+      });
+    });
 
+    it('update retry information' , function(done){
+      var param = {
+        paymentRetryId : resulst.paymentretryId,
+        informationData : [{
+          name : 'informationDataField',
+          value : 'informationDataValueUpd'
+        },{
+          name : 'informationDataFieldNew',
+          value : 'informationDataValueNew'
+        }]
+      }
+      magento.bighippopaymentretryInformation.update(param, function(err,data){
+        assert.isTrue(data);
+        done();
+      });
+    });
 
+    it('info retry information' , function(done){
+      var param = {
+        informationId : resulst.paymentretryInformationId
+      }
+      magento.bighippopaymentretryInformation.info(param, function(err,data){
+        assert.isObject(data);
+        done();
+      });
+    });
 
+    it('list retry information' , function(done){
+      var param = {
+        paymentretryId : resulst.paymentretryId
+      }
+      magento.bighippopaymentretryInformation.list(param, function(err,data){
+        console.log('err' , err);
+        console.log('data' , data);
+        assert.isArray(data);
+        done();
+      });
+    });
 
+    it('delete retry information' , function(done){
+      var param = {
+        informationId : resulst.paymentretryInformationId
+      }
+      magento.bighippopaymentretryInformation.delete(param, function(err,data){
+        assert.isTrue(data);
+        done();
+      });
+    });
 
-
-
-
-
+  });
+  
+  //start payment retry information test
 
   //start product test
   describe('Products test' , function(){
