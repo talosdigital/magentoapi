@@ -87,7 +87,7 @@ describe('new api products', function () {
         });
       });
 
-      it.skip('info payment plans', function(done){
+      it('info payment plans', function(done){
         var param = {paymentPlanId:resulst.paymentplanId};
         magento.bighippoPaymentplan.info(param, function(err,data){
           assert.isNull(err)
@@ -105,17 +105,53 @@ describe('new api products', function () {
         });
       });
 
-      it.skip('delete payment plans', function(done){
-        var param = {paymentPlanId:resulst.paymentplanId};
+      it('create payment plans full', function(done){
+        var param = {paymentplan : {
+          name:'testNameFull', destination:'destinationTestFull',
+          'metadatas' : [
+            {name : 'metaName1' , value : 'metaValue1'} , {name : 'metaName2' , value : 'metaValue2'}],
+          'schedules' : {
+            schedule_data : {name :'schedule full test',
+              informations : [
+                {name : 'scheduleName1' , value : 'scheduleValue1'},
+                {name : 'scheduleName2' , value : 'scheduleValue2'}
+              ]
+            },
+
+          }}}
+
+        magento.bighippoPaymentplan.createFull(param, function(err,data){
+          resulst.paymentplanIdFull=data;
+          assert.isNull(err)
+          assert.isString(data)
+          done();
+        });
+      });
+
+      it('info full payment plans', function(done){
+        var param = {paymentPlanId:resulst.paymentplanIdFull};
+        magento.bighippoPaymentplan.infoFull(param, function(err,data){
+
+          assert.isNull(err)
+          assert.isObject(data)
+          //assert.equal('testName3', data.name);
+          done();
+        });
+      });
+
+      it('delete payment plans', function(done){
+        var param = {paymentPlanId:resulst.paymentplanIdFull};
         magento.bighippoPaymentplan.delete(param, function(err,data){
+          console.log('err' ,err);
+          console.log('data' , data);
           assert.isNull(err)
           assert.isTrue(data)
           done();
         });
       });
 
-
     });
+
     //end payment plan test
 
     //start Payment plan meta test
@@ -466,8 +502,6 @@ describe('new api products', function () {
         paymentretryId : resulst.paymentretryId
       }
       magento.bighippopaymentretryInformation.list(param, function(err,data){
-        console.log('err' , err);
-        console.log('data' , data);
         assert.isArray(data);
         done();
       });
@@ -485,7 +519,7 @@ describe('new api products', function () {
 
   });
   
-  //start payment retry information test
+  //end payment retry information test
 
   //start product test
   describe('Products test' , function(){

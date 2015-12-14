@@ -60,8 +60,8 @@ var protos = {
   /**
    Allows you to create the full payment retry.
    */
-  createFull: {
-    mandatory: 'paymentPlan',
+  createFull : {
+    mandatory: 'paymentplan',
     optional: '',
   },
 
