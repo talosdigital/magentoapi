@@ -21,7 +21,7 @@ var protos = {
    Allows you to create the payment retry.
    */
   create: {
-      mandatory: 'playmentRetryId,informationData',
+      mandatory: 'paymentRetryId,informationData',
       optional: '',
     },
 
@@ -60,7 +60,7 @@ var protos = {
   /**
    Allows you to delete the payment retry.
    */
-  deleteTwo: {//change delete for del.
+  delete: {//change delete for del.
     mandatory: 'informationId',
     optional: '',
   },

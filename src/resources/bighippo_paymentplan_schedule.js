@@ -60,7 +60,7 @@ var protos = {
   /**
    Allows you to delete the payment retry.
    */
-  deleteTwo: {//change delete for del.
+  delete: {//change delete for del.
     mandatory: 'paymentPlanId',
     optional: '',
   },

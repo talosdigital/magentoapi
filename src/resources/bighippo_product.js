@@ -30,7 +30,7 @@ var protos = {
    */
   listGroupedProducts: {
     mandatory: '',
-    optional: 'argumentsGroupedProducts,argumentsSimpleProducts,includeMedia',
+    optional: 'argumentsGroupedProducts,argumentsSimpleProducts,includeMedia'
   },
 
   /**
