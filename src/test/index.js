@@ -18,44 +18,25 @@ var safe = wagner.safe();
 var resulst = {};
 
 
-before(function() {
-  //Task login
-  wagner.task('login', function(callback) {
-    setTimeout(function() {
-      magento.core.info(function(err, data) {
-        if(err) {
-          magento.login(function(err, sessId) {
-            if(err) return callback(err);
-            return callback(null, sessId);
-          });
-        }
-        else {
-          return callback(null, true);
-        }
+
+before(function(done) {
+  this.timeout(3000);
+  magento.core.info(function(err, data) {
+    if(err) {
+      magento.login(function(err, sessId) {
+        if(err) return callback(err);
+        done();
       });
-    }, 100);
+    }
+    else {
+      done();
+    }
   });
-});
-
-after(function() {
-  // runs after all tests in this block
-});
-
-safe.on('error', function(error) {
-  //assert.equal(error.toString(), 'Oops I messed up');
-  console.log('Capture error:' , error.toString());
-  done();
 });
 
 
 describe('new api products', function () {
   this.timeout(100000);
-  it('login', function (done) {
-    wagner.invokeAsync(function (error, login) {
-      assert.isNull(error);
-      done();
-    });
-  })
 
   //start payment plan flow
   describe('payment plan flow' , function(){
@@ -63,7 +44,7 @@ describe('new api products', function () {
     describe('Payment plan test' , function(){
 
       it('create payment plans', function(done){
-        var param = {paymentPlanData:
+        let param = {paymentPlanData:
         {name:'testName',
           destination:'destinationTest'}};
 
@@ -77,7 +58,7 @@ describe('new api products', function () {
 
       it('update payment plans', function(done){
         var param = {paymentPlanId:resulst.paymentplanId,
-          playmentPlanData: {name:'testName3',
+          paymentPlanData: {name:'testName3',
             destination:'destinationTest3'}};
 
         magento.bighippoPaymentplan.update(param, function(err,data){
