@@ -1,3 +1,5 @@
+'use strict'
+
 var assert = require('chai').assert;
 var Magento = require('../magento');
 var wagner = require('wagner-core');
@@ -112,7 +114,6 @@ describe('new api products', function () {
       it('info full payment plans', function(done){
         var param = {paymentPlanId:resulst.paymentplanIdFull};
         magento.bighippoPaymentplan.infoFull(param, function(err,data){
-
           assert.isNull(err)
           assert.isObject(data)
           //assert.equal('testName3', data.name);
@@ -123,8 +124,6 @@ describe('new api products', function () {
       it('delete payment plans', function(done){
         var param = {paymentPlanId:resulst.paymentplanIdFull};
         magento.bighippoPaymentplan.delete(param, function(err,data){
-          console.log('err' ,err);
-          console.log('data' , data);
           assert.isNull(err)
           assert.isTrue(data)
           done();
