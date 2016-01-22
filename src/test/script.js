@@ -40,7 +40,9 @@ before(function(done) {
 describe('new api products', function () {
   this.timeout(100000);
   describe('script' , function(){
-    it('posible new cornjob', function(done){
+    this.timeout(100000);
+    it('posible new cronjob', function(done){
+      this.timeout(100000);
       let ppScheduleEntityId = []
       magento.bighippoPaymentplanScheduleInformation.list({}, function(err,paymentplanScheduleInformation){
         magento.bighippoPaymentplanSchedule.list({}, function(err,paymentplanSchedule){
@@ -64,7 +66,23 @@ describe('new api products', function () {
               return schedule.some(val => val === objFilterThree.entity_id)
             }).map(val => val.name)
             console.log('Orders', Orders)
-            done();
+            let count = 0
+            scheduleInformation.forEach(function(value){
+              let param = {
+                scheduleId:value,
+                informationData:
+                  [{
+                    name : 'isCharged',
+                    value : true,
+                  }]
+                }
+                magento.bighippoPaymentplanScheduleInformation.update(param, function(err,data){
+                  count = count + 1
+                  if(count === scheduleInformation.length){
+                    done();
+                  }
+                });
+            });
           });
         });
       });
