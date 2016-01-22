@@ -22,7 +22,7 @@ var resulst = {};
 
 
 before(function(done) {
-  this.timeout(3000);
+  this.timeout(30000);
   magento.core.info(function(err, data) {
     if(err) {
       magento.login(function(err, sessId) {
@@ -44,7 +44,7 @@ function parsePaymentPlan(response){
 
   response.schedules.forEach(function (ele, idx, arr){
     var schedulePeriod = {};
-    schedulePeriod.entityId = ele.entityId;
+    schedulePeriod.entityId = ele.entity_id;
     ele.informations.forEach(function(eleInfo, idxInfo, arrInfo){
       schedulePeriod[eleInfo.name] = eleInfo.value
     });
@@ -61,6 +61,7 @@ function parsePaymentPlan(response){
 describe('new api products', function () {
   this.timeout(100000);
   it('info full payment plans', function(done){
+    this.timeout(100000);
     var param = {paymentPlanId:'580'};
     console.log('param', param)
     magento.bighippoPaymentplan.infoFull(param, function(err,data){
