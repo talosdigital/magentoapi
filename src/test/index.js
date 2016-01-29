@@ -37,11 +37,11 @@ before(function(done) {
 });
 
 
-describe('new api products', function () {
+describe.skip('new api products', function () {
   this.timeout(100000);
 
   //start payment plan flow
-  describe('payment plan flow' , function(){
+  describe.skip('payment plan flow' , function(){
     //start payment plan test
     describe('Payment plan test' , function(){
 
@@ -347,7 +347,7 @@ describe('new api products', function () {
   //end payment plan flow
 
   //start coupons test
-  describe('Coupons test' , function(){
+  describe.skip('Coupons test' , function(){
 
     it('List coupon', function(done){
       magento.bighippoCoupon.list( function(err,data){
@@ -371,7 +371,7 @@ describe('new api products', function () {
 
   //start payment retry test
 
-  describe('payment plan retry ' , function(){
+  describe.skip('payment plan retry ' , function(){
 
     it('create payment plan retry' , function(done){
       var param = {
@@ -433,7 +433,7 @@ describe('new api products', function () {
 
   //start payment retry information test
 
-  describe('Payment retry information' , function(){
+  describe.skip('Payment retry information' , function(){
 
     it('create retry information' , function(done){
       var param = {
@@ -502,7 +502,7 @@ describe('new api products', function () {
   //end payment retry information test
 
   //start product test
-  describe('Products test' , function(){
+  describe.skip('Products test' , function(){
     it('list Simple Products error missing value for productId', function (done) {
       magento.bighippoProducts.listSimpleProducts({}, function(err,data){
         assert.equal('missing value for "productId"', err.message)
